@@ -10,7 +10,7 @@ exports.all = () => {
 
 
 //insert new product CREATE
-exports.insert = (name, description, price) => {
+exports.create = (name, description, price) => {
   return knex('products').insert({
     name: name,
     description: description,
@@ -21,26 +21,26 @@ exports.insert = (name, description, price) => {
 
 
 //get product by id RETRIEVE
-exports.get = (id) => {
+/*exports.get = (id) => {
   return knex
   .select('*')
   .from('products').where({id: id})
-}
+}*/
 
 
 //update product name description and price by id UPDATE
-exports.update = (id, name, description, price) => {
+/*exports.update = (id, name, description, price) => {
   return knex('products').update({
     name: name,
     description: description,
     price: price
   }).where(id: id)
-}
+}*/
 
 
 //delete product by id DELETE
-exports.del = (id) => {
+/*exports.del = (id) => {
   return knex
   .select('*')
   .from('products').where({id: id}).del()
-}
+}*/

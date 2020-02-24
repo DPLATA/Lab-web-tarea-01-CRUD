@@ -4,15 +4,15 @@ let router = require('express').Router()
 
 let pagesController = require('../controllers/PagesControllers')
 
-router.get('/', pagesController.homepage)
+router.get('/products', pagesController.products)
 
-router.get('/Create', pagesController.create)
+router.get('/products/create', pagesController.create)
 
-router.get('/Retrieve', pagesController.retrieve)
+/*router.get('/products/:id', pagesController.retrieve)
 
-router.get('/Update', pagesController.update)
+router.put('/products/id', pagesController.update)
 
-router.get('/Delete', pagesController.delete)
+router.delete('/products/:id', pagesController.delete)*/
 
 router.get('/*', pagesController.default)
 

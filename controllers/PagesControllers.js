@@ -1,17 +1,20 @@
 let ProductModel = require('../models/Product')
 
-exports.homepage = (req, res) => {
-
+exports.products = (req, res) => {
   ProductModel.all()
   .then((data) => {
-    res.render('pages/homepage')
+    let products = data
+    console.log(products)
+    res.render('pages/products', {products: products})
   })
 }
 
 exports.create = (req, res) => {
-  ProductModel.insert().then((data) => {
-    console.log('ok')
-  })
+  res.render('pages/create')
+  /*ProductModel.create().then((data) => {
+
+    //console.log('ok')
+  })*/
 }
 
 exports.retrieve = (req, res) => {
