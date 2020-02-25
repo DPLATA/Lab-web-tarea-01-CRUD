@@ -18,15 +18,25 @@ exports.product = (req, res) => {
   })
 }
 
-exports.create = (req, res) => {
-  let name = req.body.name
-  let description = req.body.description
-  let price = req.body.price
-  ProductModel.create(name, description, price).then((data) => {
+/*exports.create = (req, res) => {
+  ProductModel.create(req, res).then((data) => {
     let products = data
     res.json(products[0])
     console.log('ok')
   })
+}*/
+
+exports.insert = (req, res) => {
+console.log(req.body.name);
+console.log(req.body.description);
+console.log(req.body.price);
+ ProductModel.insert(
+   req.body.name, // nombre
+   req.body.description, // descripción
+   req.body.price) // precio
+   .then((data) => {
+     console.log('ok')
+   })
 }
 
 exports.update = (req, res) => {

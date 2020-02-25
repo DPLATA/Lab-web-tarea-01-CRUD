@@ -12,11 +12,13 @@ exports.one = (id) => {
 
 
 //insert new product CREATE
-exports.create = (name, description, price) => {
-  return knex('products').insert({
-    name: name,
-    description: description,
-    price: price
+exports.insert = (name, description, price) => {
+  return knex('products').insert(
+    name, // nombre
+    description, // descripción
+    price) // precio
+    .then((data) => {
+      console.log('ok')
   })
 
 }

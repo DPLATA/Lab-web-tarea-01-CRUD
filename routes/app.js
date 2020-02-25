@@ -8,7 +8,7 @@ router.get('/products', pagesController.products)
 
 router.get('/products/:id', pagesController.product)
 
-router.post('/products', pagesController.create)
+router.post('/products', pagesController.insert)
 
 //router.put('/products/:id', pagesController.update)
 
