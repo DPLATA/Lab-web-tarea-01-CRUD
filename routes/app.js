@@ -10,9 +10,11 @@ router.get('/products/:id', pagesController.product)
 
 router.post('/products', pagesController.create)
 
-router.put('/products/:id', pagesController.update)
+//router.put('/products/:id', pagesController.update)
 
 router.delete('/products/:id', pagesController.delete)
+
+router.get('/homepage', pagesController.homepage)
 
 router.get('/*', pagesController.default)
 

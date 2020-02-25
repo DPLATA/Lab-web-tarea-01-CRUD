@@ -19,7 +19,10 @@ exports.product = (req, res) => {
 }
 
 exports.create = (req, res) => {
-  ProductModel.create(req.body).then((data) => {
+  let name = req.body.name
+  let description = req.body.description
+  let price = req.body.price
+  ProductModel.create(name, description, price).then((data) => {
     let products = data
     res.json(products[0])
     console.log('ok')
@@ -44,4 +47,12 @@ exports.delete = (req, res) => {
 
 exports.default = (req, res) => {
   res.send('Default')
+}
+
+exports.homepage = (req, res) => {
+  res.render('pages/homepage')
+}
+
+exports.createpage = (req, res) => {
+  res.render('pages/create')
 }

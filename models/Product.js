@@ -17,19 +17,19 @@ exports.create = (name, description, price) => {
     name: name,
     description: description,
     price: price
-  }).returning('*')
+  })
 
 }
 
 
 //update product name description and price by id UPDATE
-exports.update = (id, name, description, price) => {
+/*exports.update = (id, name, description, price) => {
   return knex('products').update({
     name: name,
     description: description,
     price: price
   }).where(id: id)
-}
+}*/
 
 
 //delete product by id DELETE
