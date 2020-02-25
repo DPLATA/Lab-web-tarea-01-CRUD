@@ -5,30 +5,39 @@ exports.products = (req, res) => {
   .then((data) => {
     let products = data
     console.log(products)
-    res.render('pages/products', {products: products})
+    //sigue sin funcionar la vista
+    res.render('pages/products', { products: products })
+  })
+}
+
+exports.product = (req, res) => {
+  ProductModel.one(req.params.id).then((data) => {
+    let product = data
+    console.log(product)
+    res.json(product)
   })
 }
 
 exports.create = (req, res) => {
-  res.render('pages/create')
-  /*ProductModel.create().then((data) => {
-
-    //console.log('ok')
-  })*/
-}
-
-exports.retrieve = (req, res) => {
-  console.log('ok')
+  ProductModel.create(req.body).then((data) => {
+    let products = data
+    res.json(products[0])
+    console.log('ok')
+  })
 }
 
 exports.update = (req, res) => {
-  ProductModel.update().then((data)=> {
+  ProductModel.update(req.params.id, req.params.name, req.body.description, req.params.price).then((data)=> {
+    let products = data
+    res.json(products)
     console.log('ok')
   })
 }
 
 exports.delete = (req, res) => {
-  ProductModel.del().then((data) => {
+  ProductModel.del(req.params.id).then((data) => {
+    let product = data
+    res.json('ok')
     console.log('ok')
   })
 }

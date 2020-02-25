@@ -6,13 +6,13 @@ let pagesController = require('../controllers/PagesControllers')
 
 router.get('/products', pagesController.products)
 
-router.get('/products/create', pagesController.create)
+router.get('/products/:id', pagesController.product)
 
-/*router.get('/products/:id', pagesController.retrieve)
+router.post('/products', pagesController.create)
 
-router.put('/products/id', pagesController.update)
+router.put('/products/:id', pagesController.update)
 
-router.delete('/products/:id', pagesController.delete)*/
+router.delete('/products/:id', pagesController.delete)
 
 router.get('/*', pagesController.default)
 
