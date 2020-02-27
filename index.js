@@ -9,6 +9,9 @@ let appRoutes = require('./routes/app')
 let exphbs = require('express-handlebars')
 let hbs = exphbs.create({extname: extNameHbs})
 let appConfig = require('./configs/app')
+let bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({ extended:true }))
 
 app.engine(extNameHbs, hbs.engine)
 

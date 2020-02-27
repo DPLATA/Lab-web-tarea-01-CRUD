@@ -13,25 +13,22 @@ exports.one = (id) => {
 
 //insert new product CREATE
 exports.insert = (name, description, price) => {
-  return knex('products').insert(
-    name, // nombre
-    description, // descripción
-    price) // precio
-    .then((data) => {
-      console.log('ok')
+  return knex('products').insert({
+    name:name,
+    description:description,
+    price:price
   })
-
 }
 
 
 //update product name description and price by id UPDATE
-/*exports.update = (id, name, description, price) => {
-  return knex('products').update({
+exports.update = (id, name, description, price) => {
+  return knex('products').where('id', id).update({
     name: name,
     description: description,
     price: price
-  }).where(id: id)
-}*/
+  })
+}
 
 
 //delete product by id DELETE

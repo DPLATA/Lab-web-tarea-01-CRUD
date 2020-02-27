@@ -14,7 +14,7 @@ exports.product = (req, res) => {
   ProductModel.one(req.params.id).then((data) => {
     let product = data
     console.log(product)
-    res.json(product)
+    res.render('pages/products', { product: product })
   })
 }
 
@@ -27,23 +27,21 @@ exports.product = (req, res) => {
 }*/
 
 exports.insert = (req, res) => {
-console.log(req.body.name);
-console.log(req.body.description);
-console.log(req.body.price);
  ProductModel.insert(
-   req.body.name, // nombre
-   req.body.description, // descripción
-   req.body.price) // precio
-   .then((data) => {
-     console.log('ok')
+   req.body.name,
+   req.body.description,
+   req.body.price).then((data) => {
+     let products = data
+     console.log('ok' + data);
    })
 }
 
 exports.update = (req, res) => {
-  ProductModel.update(req.params.id, req.params.name, req.body.description, req.params.price).then((data)=> {
+  ProductModel.update(req.body.id, req.body.name, req.body.description, req.body.price).then((data)=> {
     let products = data
     res.json(products)
     console.log('ok')
+    res.render('pages/products')
   })
 }
 
@@ -52,17 +50,14 @@ exports.delete = (req, res) => {
     let product = data
     res.json('ok')
     console.log('ok')
+    res.render('pages/products')
   })
-}
-
-exports.default = (req, res) => {
-  res.send('Default')
 }
 
 exports.homepage = (req, res) => {
   res.render('pages/homepage')
 }
 
-exports.createpage = (req, res) => {
-  res.render('pages/create')
+exports.default = (req, res) => {
+  res.send('Default')
 }
