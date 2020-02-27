@@ -4,18 +4,22 @@ let router = require('express').Router()
 
 let pagesController = require('../controllers/PagesControllers')
 
-router.get('/products', pagesController.products)
-
-router.get('/products/:id', pagesController.product)
-
-router.post('/products', pagesController.insert)
-
-router.put('/products/update', pagesController.update)
-
-router.delete('/products/delete', pagesController.delete)
+//router.get('/products', pagesController.products)
 
 router.get('/homepage', pagesController.homepage)
 
-router.get('/*', pagesController.default)
+router.get('/insert', pagesController.insertpage)
+
+router.post('/insert', pagesController.insert)
+
+router.get('/:id/update', pagesController.product)
+
+router.post('/:id/update', pagesController.update)
+
+router.get('/:id/delete', pagesController.deletepage)
+
+router.post('/:id/delete', pagesController.delete)
+
+router.get('/*', pagesController.homepage)
 
 module.exports = router

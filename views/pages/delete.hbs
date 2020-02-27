@@ -1,8 +1,10 @@
-Delete page
-<form action="products" method="post">
+<h1>Delete page</h1>
+{{#each product}}
+<li>
+      Nombre: {{name}} Description: {{description}} $ {{price}} ID: {{id}}
+</li>
+{{/each}}
+<form action="delete" method="post">
   <input type="text" name="id" placeholder="number id">
-  <input type="text" name="name" placeholder="name">
-  <input type="text" name="description" placeholder="description">
-  <input type="text" name="price" placeholder="price">
-  <button type="submit" name="submit">submit</button>
+  <button type="submit" name="submit">delete</button>
 </form>

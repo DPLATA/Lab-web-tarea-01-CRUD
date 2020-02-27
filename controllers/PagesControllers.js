@@ -1,61 +1,65 @@
 let ProductModel = require('../models/Product')
 
-exports.products = (req, res) => {
-  ProductModel.all()
-  .then((data) => {
-    let products = data
-    console.log(products)
-    //sigue sin funcionar la vista
-    res.render('pages/products', { products: products })
-  })
-}
-
 exports.product = (req, res) => {
   ProductModel.one(req.params.id).then((data) => {
     let product = data
     console.log(product)
-    res.render('pages/products', { product: product })
+    res.render('pages/product', { product: product })
   })
 }
-
-/*exports.create = (req, res) => {
-  ProductModel.create(req, res).then((data) => {
-    let products = data
-    res.json(products[0])
-    console.log('ok')
-  })
-}*/
 
 exports.insert = (req, res) => {
  ProductModel.insert(
    req.body.name,
    req.body.description,
    req.body.price).then((data) => {
-     let products = data
-     console.log('ok' + data);
+     ProductModel.all()
+     .then((data) => {
+       let products = data
+       res.render('pages/homepage', { products: products })
+     })
    })
+}
+
+exports.insertpage = (req, res) => {
+ res.render('pages/create')
 }
 
 exports.update = (req, res) => {
   ProductModel.update(req.body.id, req.body.name, req.body.description, req.body.price).then((data)=> {
-    let products = data
-    res.json(products)
-    console.log('ok')
-    res.render('pages/products')
+    ProductModel.all()
+    .then((data) => {
+      let products = data
+      res.render('pages/homepage', { products: products })
+    })
+  })
+}
+
+exports.deletepage = (req, res) => {
+  ProductModel.one(req.params.id).then((data) => {
+    let product = data
+    console.log(product)
+    res.render('pages/delete', { product: product })
   })
 }
 
 exports.delete = (req, res) => {
-  ProductModel.del(req.params.id).then((data) => {
-    let product = data
-    res.json('ok')
-    console.log('ok')
-    res.render('pages/products')
+  console.log(req.body.id);
+  ProductModel.delete(req.params.id).then((data) => {
+    ProductModel.all()
+    .then((data) => {
+      let products = data
+      res.render('pages/homepage', { products: products })
+    })
   })
 }
 
 exports.homepage = (req, res) => {
-  res.render('pages/homepage')
+  ProductModel.all()
+  .then((data) => {
+    let products = data
+    res.render('pages/homepage', { products: products })
+  })
 }
 
 exports.default = (req, res) => {

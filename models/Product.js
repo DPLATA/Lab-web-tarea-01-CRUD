@@ -32,8 +32,6 @@ exports.update = (id, name, description, price) => {
 
 
 //delete product by id DELETE
-exports.del = (id) => {
-  return knex('products')
-  .where('id', id)
-  .from('products').del()
+exports.delete = (id) => {
+  return knex('products').where('id', id).del()
 }
