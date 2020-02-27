@@ -4,8 +4,6 @@ let router = require('express').Router()
 
 let pagesController = require('../controllers/PagesControllers')
 
-//router.get('/products', pagesController.products)
-
 router.get('/homepage', pagesController.homepage)
 
 router.get('/insert', pagesController.insertpage)
